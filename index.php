@@ -2,12 +2,11 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>geolocation으로 마커 표시하기</title>
+    <title>test</title>
     
 </head>
 <body>
 <p style="margin-top:-12px">
-    <b>Chrome 브라우저는 https 환경에서만 geolocation을 지원합니다.</b> 참고해주세요.
 </p>
 <div id="map" style="width:100%;height:900px;"></div>
 
@@ -35,6 +34,7 @@ if (navigator.geolocation) {
         
         // 마커와 인포윈도우를 표시합니다
         displayMarker(locPosition, message);
+        map.setLevel(level);
             
       });
     
