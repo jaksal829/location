@@ -21,8 +21,8 @@
     var map = new kakao.maps.Map(mapContainer, mapOption); 
 
 
-    var alat = document.getElementById("demo1");    
-    var alon = document.getElementById("demo2");
+    var alat = document.getElementById("demo");    
+    var alon = document.getElementById("demo");
 
     function getlocation(){
         if(navigator.geolocation){
