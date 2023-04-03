@@ -1,53 +1,65 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>지도 생성하기</title>
-    
-</head>
-<body>
-    <!-- 지도를 표시할 div 입니다 -->
-    <div id="map" style="width:100%;height:700px;"></div>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+         <div id="map" style="width:100%;height:700px;"></div>
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=dce8def3a21921f5d72d060cd4da648a"></script>
+        <script>
+            var mapContainer = document.getElementById('map'), // 지도 표시 DIV
 
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=dce8def3a21921f5d72d060cd4da648a"></script>
-    <script>
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
-        center: new kakao.maps.LatLng(35.1800298, 128.7387107), // 지도의 중심좌표
-        level: 10 // 지도의 확대 레벨
-    };
+            mapOption ={
+                center: new kakao.maps.LatLng(33.4450701, 123.570667), //중심 좌표
+                lever: 10 //지도 크기
+            };
 
-var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+            var map = new kakao.maps.Map(mapContainer, mapOption); //지도 생성
 
+            var lat; //위도 변수
+            var lon; //경도 변수
 
-var lat = "";
-var lon = "";
+            var options = {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0
+            };
+            //디바이스 위도 경도 가져오기
+            function success(position){
+                console.log(position);
+                lat = position.coord.latitude; // 위도
+                lon = position.coord.longitude; // 경도
 
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else { 
-  }
-}
-function showPosition(position) {
-  lat = position.coords.latitude;
-  lon = position.coords.longitude;
-}
-getLocation();
+                var locPosition = new kakao.maps.LatLng(lat, lon), //마커 표시 위치
+                message = '<div style="padding:5px;">여기인가요?</div>'
+                displayMarker(locPosition, message);
+            };
+            
+            //error 처리
+            function error(err){
+                console.log(err);
+            };
 
-// 마커가 표시될 위치입니다 
-var markerPosition  = new kakao.maps.LatLng(parseFloat(x), parseFloat(y)); 
+            if(navigator.geolocation){
+                alert('위치정보 확인');
+                var na = navigator.geolocation.watchPosition(success,error,options);
+                console.log(na);
+            }
 
-// 마커를 생성합니다
-var marker = new kakao.maps.Marker({
-    position: markerPosition
-});
-
-// 마커가 지도 위에 표시되도록 설정합니다
-marker.setMap(map);
-
-// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
-// marker.setMap(null);    
-</script>
-</body>
+            //마커 생성
+            var marker;
+            var flag=false;
+            
+            function displayMarker(locPosition, message){
+                console.log(1);
+                if(flag){
+                    marker.setMap(null);
+                }
+                marker = new kakao.maps.Marker({position: locPosition});
+                marker.setMap(map);
+                flag=true;
+                map.setCenter(locPosition);
+            }
+        </script>
+    </body>
 </html>
