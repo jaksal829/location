@@ -7,7 +7,7 @@
 </head>
 <body>
     <!-- 지도를 표시할 div 입니다 -->
-    <div id="map" style="width:100%;height:100%;"></div>
+    <div id="map" style="width:100%;height:700px;"></div>
 
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=dce8def3a21921f5d72d060cd4da648a"></script>
     <script>
