@@ -20,25 +20,7 @@
     // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
     var map = new kakao.maps.Map(mapContainer, mapOption); 
 
-
-    var alat = document.getElementById("demo");    
-    var alon = document.getElementById("demo");
-
-    function getlocation(){
-        if(navigator.geolocation){
-            navigator.geolocation.getCurrentPosition(showPosition);
-        }
-        else { 
-        }
-    }
-
-    function showPosition(position) {
-    alat.innerHTML = position.coords.latitude;
-    alon.innerHTML = position.coords.longitude;
-    }
-    getlocation();
-
-    var markerPosition  = new kakao.maps.LatLng(alat, alon); 
+    var markerPosition  = new kakao.maps.LatLng(35.1800298, 128.7387107); 
 
     // 마커를 생성합니다
     var marker = new kakao.maps.Marker({
