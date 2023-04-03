@@ -68,7 +68,9 @@ function displayMarker(locPosition, message) {
     infowindow.open(map, marker);
     
     // 지도 중심좌표를 접속위치로 변경합니다
-    map.setCenter(locPosition);      
+    map.setCenter(locPosition); 
+    map.setLever(3);   
+      
 }    
 </script>
 </body>
