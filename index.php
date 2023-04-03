@@ -59,13 +59,13 @@ function displayMarker(locPosition, message) {
         iwRemoveable = true;
 
     // 인포윈도우를 생성합니다
-    var infowindow = new kakao.maps.InfoWindow({
-        content : iwContent,
-        removable : iwRemoveable
-    });
+    //var infowindow = new kakao.maps.InfoWindow({
+        //content : iwContent,
+        //removable : iwRemoveable
+    //});
     
     // 인포윈도우를 마커위에 표시합니다 
-    infowindow.open(map, marker);
+    //infowindow.open(map, marker);
     
     // 지도 중심좌표를 접속위치로 변경합니다
     map.setCenter(locPosition); 
