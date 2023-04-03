@@ -69,7 +69,7 @@ function displayMarker(locPosition, message) {
     
     // 지도 중심좌표를 접속위치로 변경합니다
     map.setCenter(locPosition); 
-    map.setLever(3);   
+    map.setLevel(3);   
       
 }    
 </script>
